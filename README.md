@@ -1,99 +1,117 @@
-# CSV‑file‑processing
+# CSV-file-processing
 
-Инструмент для очистки и анализа CSV‑файлов: удаляет дубликаты, сортирует данные по возрасту и формирует отчёт со средним возрастом.
+## 📌 Description
 
-## 🔍 Цель проекта
+This project is a Python script for cleaning and processing CSV files with user data.
 
-Обработка CSV‑файла с персональными данными:
-- удаление дубликатов записей;
-- сортировка по возрасту;
-- расчёт среднего возраста;
-- сохранение результатов в новый CSV и текстовый отчёт.
+The script:
 
-## 📦 Основные файлы
+* Removes duplicate rows
+* Sorts records by age
+* Calculates the average age
+* Saves cleaned data to a new CSV file
+* Writes the average age to a TXT report
 
-- `info.csv` — исходный файл с данными (формат: *Имя,Возраст,Город*);
-- `info_cleanned.csv` — очищенный и отсортированный CSV;
-- `report.txt` — отчёт с средним возрастом.
+This project demonstrates basic data processing and file handling in Python.
 
-## 🛠 Как работает программа
+---
 
-1. **Чтение данных** (`read_csv`):  
-   - считывает `info.csv`;
-   - пропускает строки с некорректным возрастом;
-   - собирает уникальные записи (через `set`);
-   - извлекает возрасты для расчёта среднего.
+## 📂 Project Structure
 
-2. **Запись CSV** (`write_csv`):  
-   - сохраняет уникальные строки в `info_cleanned.csv`;
-   - сортирует записи по возрасту (по возрастанию);
-   - добавляет заголовок, если он есть в исходнике.
+```
+.
+├── info.csv              # Input CSV file
+├── info_cleanned.csv     # Cleaned and sorted CSV output
+├── report.txt            # TXT report with average age
+├── main.py               # Main script
+└── README.md             # Documentation
+```
 
-3. **Формирование отчёта** (`write_txt`):  
-   - вычисляет средний возраст;
-   - записывает результат в `report.txt` с точностью до 2 знаков после запятой;
-   - обрабатывает случай отсутствия данных.
+---
 
-## 🔧 Как запустить
+## 🧾 Input Data Format (`info.csv`)
 
-1. Убедитесь, что в папке проекта есть файл `info.csv` с данными в формате: 
+The input CSV file should contain at least the following columns:
 
-    ```bash
-    Имя,Возраст,Город
-    Игорь,23,Volgograd
-    Игорь,23,Volgograd
-    Анна,23,Volgograd
-    Илья,24,Moscow
-    Игорь,29,Moscow
+```
+Name,Age,City
+John,25,London
+Anna,30,Berlin
+```
 
-2. Запустите скрипт:  
-    ```bash 
-    python main.py
+* The second column must contain numeric age values
+* Rows with invalid age values are ignored
+* Duplicate rows are automatically removed
 
-3. Результаты:
-    - очищенные данные — в `info_cleanned.csv`;
-    - отчёт — в `report.txt`.
+---
 
-## 🧩 Структура кода
+## ⚙️ What the Script Does
 
-- `main()` — точка входа, вызывает все функции последовательно.
+1. Reads data from `info.csv`
+2. Removes duplicate rows
+3. Sorts records by age
+4. Calculates the average age
+5. Saves cleaned data to `info_cleanned.csv`
+6. Writes the average age to `report.txt`
 
-- `read_csv()` — читает исходный CSV, возвращает заголовок, уникальные строки и список возрастов.
+---
 
-- `write_csv(header, seen_rows)` — записывает очищенные данные в новый CSV.
+## 📄 Output Examples
 
-- `write_txt(ages)` — создаёт текстовый отчёт со средним возрастом. 
+### `report.txt`
 
-## 🛡 Обработка ошибок
-Программа учитывает:
+```
+Средний возраст: 27.50
+```
 
-- отсутствие файла (FileNotFoundError);
+### `info_cleanned.csv`
 
-- проблемы с правами доступа (PermissionError);
+```
+Name,Age,City
+John,25,London
+Anna,30,Berlin
+```
 
-- некорректные данные (например, нечисловой возраст — пропускается через except ValueError).
+---
 
-## 📜 Примеры выходных файлов
-**info_cleanned.csv** (отсортировано по возрасту):
-    
-    Имя,Возраст,Город
-    Игорь,23,Volgograd
-    Анна,23,Volgograd
-    Илья,24,Moscow
-    Игорь,29,Moscow
+## ▶️ How to Run
 
-**report.txt:**
+1. Make sure Python 3.8+ is installed
+2. Place `info.csv` in the project directory
+3. Run the script:
 
-    Средний возраст: 24.75
+```bash
+python main.py
+```
 
-## ℹ Примечания
-- Кодировка файлов: UTF‑8.
+---
 
-- Разделитель в CSV: запятая (,).
+## 🛠 Technologies Used
 
-- Для работы не требуются дополнительные библиотеки (используется встроенный модуль csv).
+* Python 3
+* csv module
 
-## 📧 Автор
-- **Имя**: Игорь
-- **Почта**: ibatrakov017@gmail.com
-- **GitHub**: https://github.com/ShizoDDS
+---
+
+## 🎯 Purpose
+
+This project demonstrates:
+
+* CSV file processing
+* Data cleaning and validation
+* Sorting and aggregation
+* Writing reports
+
+It is suitable as a junior-level portfolio project for freelance platforms.
+
+---
+
+## 👤 Author
+
+Junior Python Developer
+
+---
+
+## 📬 Contact
+
+If you need a custom CSV data processing script, feel free to contact me.
